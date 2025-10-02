@@ -10,17 +10,35 @@ function generateSequence() {
     
     // TODO: Validate inputs
     // Check if values are valid numbers
+    if (isNaN(start) || isNaN(end) || isNaN(step)) {
+        output.innerHTML = "Please enter valid numbers.";
+        return;
+    }
+
     // Check if step is positive
+    if (step <= 0) {
+        output.innerHTML = "Step must be a positive number.";
+        return;
+    }
+
     // Check if end is greater than start
-    
+    if (end <= start) {
+        output.innerHTML = "End must be greater than start.";
+        return;
+    }
+
     // TODO: Create array to store sequence
     let sequence = [];
     
     // TODO: Use for loop with step to generate sequence
     // Remember to use the step in the for loop increment
+    for (let i = start; i < end; i += step) {
+        sequence.push(i);
+    }
     
     // TODO: Display the sequence
     // Join the numbers with arrows between them
+    output.innerHTML = sequence.join(" ➔ ");
 }
 
 // Initialize the page
